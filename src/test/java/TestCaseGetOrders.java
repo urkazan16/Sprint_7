@@ -1,5 +1,5 @@
 import io.qameta.allure.junit4.DisplayName;
-import order_model.OrderRequest;
+import ru.praktikum_services.qa_scooter.order.OrderRequest;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,6 +19,7 @@ public class TestCaseGetOrders {
     public void getTestCaseGetOrder() {
         orderRequest.get()
                 .assertThat()
+                .statusCode(200)
                 .body("orders", notNullValue());
     }
 }

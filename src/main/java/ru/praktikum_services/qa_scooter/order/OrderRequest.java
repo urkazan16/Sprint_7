@@ -1,6 +1,6 @@
-package order_model;
+package ru.praktikum_services.qa_scooter.order;
 
-import constants.request.Header;
+import ru.praktikum_services.qa_scooter.constants.request.Header;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 
@@ -10,7 +10,7 @@ public class OrderRequest extends Header {
 
     private static final String COURIER_URL = BASE_URL + "orders/";
 
-    @Step("Create order {orderFields}")
+    @Step("Create order")
     public ValidatableResponse create(OrderFields orderFields) {
         return given()
                 .spec(getRequestSpec())
@@ -39,5 +39,6 @@ public class OrderRequest extends Header {
                 .spec(getRequestSpec())
                 .put(COURIER_URL + "cancel?track=" + id).then();
     }
+
 
 }

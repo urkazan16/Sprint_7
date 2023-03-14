@@ -1,7 +1,8 @@
-package courer_model;
+package ru.praktikum_services.qa_scooter.courier;
 
-import constants.request.Header;
+import ru.praktikum_services.qa_scooter.constants.request.Header;
 import io.qameta.allure.Step;
+import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
@@ -33,5 +34,13 @@ public class CourierRequest extends Header {
                 .when()
                 .delete(COURIER_URL + id)
                 .then();
+    }
+
+    @Step("auth order {id}")
+    public Response auth(CourierAuthorizationFields courierAuthorizationFields) {
+        return given()
+                .spec(getRequestSpec())
+                .body(courierAuthorizationFields)
+                .post(COURIER_URL + "login/");
     }
 }

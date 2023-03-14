@@ -1,4 +1,4 @@
-package order_model;
+package ru.praktikum_services.qa_scooter.order;
 
 import java.util.List;
 
@@ -101,4 +101,18 @@ public class OrderFields {
         this.color = color;
     }
 
+    @Override
+    public String toString() {
+        return "OrderFields{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", metroStation=" + metroStation +
+                ", phone='" + phone + '\'' +
+                ", rentTime=" + rentTime +
+                ", deliveryDate='" + deliveryDate + '\'' +
+                ", comment='" + comment + '\'' +
+                ", color=" + color +
+                '}';
+    }
 }

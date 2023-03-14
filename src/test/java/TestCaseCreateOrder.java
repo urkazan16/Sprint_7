@@ -1,7 +1,7 @@
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import order_model.OrderFields;
-import order_model.OrderRequest;
+import ru.praktikum_services.qa_scooter.order.OrderFields;
+import ru.praktikum_services.qa_scooter.order.OrderRequest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,7 +40,8 @@ public class TestCaseCreateOrder {
         this.color = color;
     }
 
-    @Parameterized.Parameters
+    //    @Parameterized.Parameters( name = "Тестовые данные: {0} {1} {2} {3} {4} {5} {6} {7} {8}" )
+    @Parameterized.Parameters(name = "Создание заказа. Тестовые данные: {0} {1} {2} {3} {4} {5} {6} {7} {8}")
     public static Object[][] getCredentials() {
         return new Object[][]{
                 {"Максим", "Жадобов", "г.Москва ул.Груздева д.5", 5, "+7905314620", 5, "2020-06-06", "", List.of("")},
@@ -66,6 +67,7 @@ public class TestCaseCreateOrder {
         OrderFields orderFields = new OrderFields(firstName, lastName, address, metroStation, phone, rentTime, deliveryDate, comment, color);
         ValidatableResponse response = orderRequest.create(orderFields)
                 .assertThat()
+                .statusCode(201)
                 .body("track", notNullValue());
         orderIn = response.extract().path("track");
 

@@ -1,4 +1,4 @@
-package courer_model;
+package ru.praktikum_services.qa_scooter.courier;
 
 public class CourierAuthorizationFields {
 
