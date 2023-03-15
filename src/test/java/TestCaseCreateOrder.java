@@ -1,12 +1,12 @@
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import ru.praktikum_services.qa_scooter.order.OrderFields;
-import ru.praktikum_services.qa_scooter.order.OrderRequest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import ru.praktikum_services.qa_scooter.order.OrderFields;
+import ru.praktikum_services.qa_scooter.order.OrderRequest;
 
 import java.util.List;
 

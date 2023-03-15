@@ -1,7 +1,7 @@
 import io.qameta.allure.junit4.DisplayName;
-import ru.praktikum_services.qa_scooter.order.OrderRequest;
 import org.junit.Before;
 import org.junit.Test;
+import ru.praktikum_services.qa_scooter.order.OrderRequest;
 
 import static org.hamcrest.Matchers.notNullValue;
 

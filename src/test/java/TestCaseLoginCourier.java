@@ -1,11 +1,11 @@
-import ru.praktikum_services.qa_scooter.constants.TestUser;
 import io.qameta.allure.junit4.DisplayName;
-import ru.praktikum_services.qa_scooter.courier.CourierAuthorizationFields;
-import ru.praktikum_services.qa_scooter.courier.CourierRegistrationFields;
-import ru.praktikum_services.qa_scooter.courier.CourierRequest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.praktikum_services.qa_scooter.constants.TestUser;
+import ru.praktikum_services.qa_scooter.courier.CourierAuthorizationFields;
+import ru.praktikum_services.qa_scooter.courier.CourierRegistrationFields;
+import ru.praktikum_services.qa_scooter.courier.CourierRequest;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;

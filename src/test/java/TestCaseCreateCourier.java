@@ -1,12 +1,12 @@
-import ru.praktikum_services.qa_scooter.constants.TestUser;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
-import ru.praktikum_services.qa_scooter.courier.CourierAuthorizationFields;
-import ru.praktikum_services.qa_scooter.courier.CourierRegistrationFields;
-import ru.praktikum_services.qa_scooter.courier.CourierRequest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.praktikum_services.qa_scooter.constants.TestUser;
+import ru.praktikum_services.qa_scooter.courier.CourierAuthorizationFields;
+import ru.praktikum_services.qa_scooter.courier.CourierRegistrationFields;
+import ru.praktikum_services.qa_scooter.courier.CourierRequest;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.equalTo;
@@ -50,7 +50,7 @@ public class TestCaseCreateCourier {
         courierRequest.create(courier_reg)
                 .assertThat()
                 .statusCode(409)
-                .body("message", equalTo("Этот логин уже используется. Попробуйте другой."));
+                .body("message", equalTo("Этот логин уже используется."));
 
         CourierAuthorizationFields courier_authorization = new CourierAuthorizationFields(TestUser.LOGIN, TestUser.PASSWORD);
         Response responseId = courierRequest.auth(courier_authorization);
@@ -77,10 +77,11 @@ public class TestCaseCreateCourier {
                 .body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
 
-    @Test
-    @DisplayName("Checking if the field name is not a required field and returns ok: true;")
-    public void getAllRequiredFieldsFirstName() {
-        CourierRegistrationFields courier_reg = new CourierRegistrationFields(TestUser.LOGIN, TestUser.PASSWORD, "");
+
+    @Test //
+    @DisplayName("The request returns the correct response code and returns ok: true")
+    public void getCourierCanBeCreated() {
+        CourierRegistrationFields courier_reg = new CourierRegistrationFields(TestUser.LOGIN, TestUser.PASSWORD, TestUser.FIRST_NAME);
         courierRequest.create(courier_reg)
                 .assertThat()
                 .statusCode(201)
@@ -91,17 +92,16 @@ public class TestCaseCreateCourier {
         courierIn = responseId.path("id");
     }
 
-    @Test //
-    @DisplayName("The request returns the correct response code and returns ok: true")
-    public void getCourierCanBeCreated() {
-        CourierRegistrationFields courier_reg = new CourierRegistrationFields(TestUser.LOGIN, TestUser.PASSWORD, TestUser.FIRST_NAME);
+    @Test
+    @DisplayName("Checking if the field name is not a required field and returns ok: true;")
+    public void getAllRequiredFieldsFirstName() {
+        CourierRegistrationFields courier_reg = new CourierRegistrationFields(TestUser.LOGIN_NEW, TestUser.PASSWORD, "");
         courierRequest.create(courier_reg)
                 .assertThat()
                 .statusCode(201)
                 .body("ok", equalTo(true));
-        ;
 
-        CourierAuthorizationFields courier_authorization = new CourierAuthorizationFields(TestUser.LOGIN, TestUser.PASSWORD);
+        CourierAuthorizationFields courier_authorization = new CourierAuthorizationFields(TestUser.LOGIN_NEW, TestUser.PASSWORD);
         Response responseId = courierRequest.auth(courier_authorization);
         courierIn = responseId.path("id");
     }
