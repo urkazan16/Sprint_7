@@ -1,5 +1,6 @@
 package ru.praktikum_services.qa_scooter.courier;
 
+
 public class CourierAuthorizationFields {
 
     private String login;
@@ -10,7 +11,8 @@ public class CourierAuthorizationFields {
         this.password = password;
     }
 
-    public CourierAuthorizationFields() {
+    public static CourierAuthorizationFields from(CourierRegistrationFields courierRegistrationFields) {
+        return new CourierAuthorizationFields(courierRegistrationFields.getLogin(), courierRegistrationFields.getPassword());
     }
 
     public String getPassword() {
@@ -35,5 +37,6 @@ public class CourierAuthorizationFields {
         return " Courier { Login: '" + login + "' Password: '" + password + "'}";
 
     }
+
 
 }

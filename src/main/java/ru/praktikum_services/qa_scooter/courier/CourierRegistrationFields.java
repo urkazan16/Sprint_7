@@ -11,9 +11,6 @@ public class CourierRegistrationFields {
         this.firstName = firstName;
     }
 
-    public CourierRegistrationFields() {
-    }
-
     public String getLogin() {
         return login;
     }
@@ -44,4 +41,6 @@ public class CourierRegistrationFields {
         return " Courier { Login: '" + login + "' Password: '" + password + "' FirstName: '" + firstName + "'}";
 
     }
+
+
 }
